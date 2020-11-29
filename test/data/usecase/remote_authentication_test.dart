@@ -28,7 +28,7 @@ void main() {
     verify(httpClient.request(
       url: url,
       method: 'post',
-      body: params.toJson(),
+      body: {'email': params.email, 'password': params.password},
     ));
   });
 }
