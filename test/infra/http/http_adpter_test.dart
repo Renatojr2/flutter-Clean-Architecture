@@ -93,6 +93,20 @@ void main() {
 
       expect(future, throwsA(HttpError.badRequest));
     });
+    test('Should return unauThorized if returns 401', () async {
+      mockResponse(401, body: '');
+
+      final future = sut.request(url: url, method: 'post');
+
+      expect(future, throwsA(HttpError.unauThorized));
+    });
+    test('Should return forBidden if returns 403', () async {
+      mockResponse(403, body: '');
+
+      final future = sut.request(url: url, method: 'post');
+
+      expect(future, throwsA(HttpError.forBidden));
+    });
     test('Should return ServerError if returns 500', () async {
       mockResponse(500);
 
