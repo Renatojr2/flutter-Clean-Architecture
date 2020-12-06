@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:faker/faker.dart';
 import 'package:fordev/data/http/http.dart';
 import 'package:fordev/infra/http/http.dart';
@@ -16,6 +18,13 @@ void main() {
     client = ClientSpy();
     sut = HttpAdapter(client);
     url = faker.internet.httpUrl();
+  });
+  group('shared', () {
+    test('Should throw ServerError if invalid method provided', () async {
+      final future = sut.request(url: url, method: 'invaled_method');
+
+      expect(future, throwsA(HttpError.serverError));
+    });
   });
   group('post', () {
     PostExpectation mockRequest() => when(
