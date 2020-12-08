@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:faker/faker.dart';
 import 'package:fordev/data/http/http.dart';
 import 'package:fordev/infra/http/http.dart';

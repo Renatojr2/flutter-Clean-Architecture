@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../components/header_line.dart';
+import '../components/components.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -6,40 +8,49 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image(
-              image: AssetImage('lib/ui/assets/logo.png'),
-            ),
-            Text(
-              'Login'.toUpperCase(),
-            ),
-            Form(
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      icon: Icon(Icons.email),
+            LoginHeader(),
+            HeaderLine(text: 'Login'),
+            Padding(
+              padding: const EdgeInsets.all(32),
+              child: Form(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        icon: Icon(
+                          Icons.email,
+                          color: Theme.of(context).primaryColorLight,
+                        ),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      icon: Icon(Icons.lock),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 32, top: 8),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          icon: Icon(
+                            Icons.lock,
+                            color: Theme.of(context).primaryColorLight,
+                          ),
+                        ),
+                        obscureText: true,
+                      ),
                     ),
-                    obscureText: true,
-                  ),
-                  FlatButton(
-                    onPressed: () {},
-                    child: Text('Entrar'.toUpperCase()),
-                  ),
-                  FlatButton.icon(
-                    icon: Icon(Icons.person),
-                    onPressed: () {},
-                    label: Text('Criar conta'),
-                  )
-                ],
+                    FlatButton(
+                      onPressed: () {},
+                      child: Text('Entrar'.toUpperCase()),
+                    ),
+                    FlatButton.icon(
+                      icon: Icon(Icons.person),
+                      onPressed: () {},
+                      label: Text('Criar conta'),
+                    )
+                  ],
+                ),
               ),
             )
           ],
